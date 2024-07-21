@@ -58,22 +58,4 @@ class RateLimiter
     }
 }
 
-// Example usage
-try {
-    $limiter = new RateLimiter(5, 60); // Allow 5 requests per minute
-
-    if (!$limiter->check()) {
-        http_response_code(429); // Set response code to "Too Many Requests"
-        echo "You have exceeded the rate limit. Please try again later.";
-        exit; // Stop script execution
-    }
-
-    // Your application logic here...
-
-} catch (RuntimeException $e) {
-    // Handle session-related errors
-    http_response_code(500);
-    echo "Internal Server Error: " . $e->getMessage();
-    exit;
-}
 ?>
